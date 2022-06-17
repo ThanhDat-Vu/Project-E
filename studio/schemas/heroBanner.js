@@ -17,22 +17,22 @@ export default {
 			type: 'string',
 		},
 		{
-			tittle: 'Slug',
-			name: 'slug',
-			type: 'slug',
-			options: {
-				source: 'title',
-			},
-		},
-		{
 			name: 'message',
-			type: 'text',
+			type: 'string',
 			title: 'Message',
 		},
 		{
 			name: 'cta',
 			type: 'string',
 			title: 'Call to action',
+		},
+		{
+			title: 'Product',
+			name: 'product',
+			type: 'reference',
+			to: {
+				type: 'product',
+			},
 		},
 	],
 };
