@@ -4,19 +4,22 @@ export default {
 	title: 'Hero Banner',
 	fields: [
 		{
+			title: 'Hero Image',
 			name: 'heroImage',
 			type: 'image',
-			title: 'Hero Image',
+			options: {
+				hotspot: true,
+			},
 		},
 		{
+			title: 'Title',
 			name: 'title',
 			type: 'string',
-			title: 'Title',
 		},
 		{
+			tittle: 'Slug',
 			name: 'slug',
 			type: 'slug',
-			tittle: 'Slug',
 			options: {
 				source: 'title',
 			},
