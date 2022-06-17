@@ -3,7 +3,7 @@ import { urlFor } from '@lib/sanity';
 export default function HeroBanner({ data }) {
 	return (
 		<div className='mx-0 sm:mx-8 text-white relative'>
-			<div className='h-[34rem] overflow-hidden relative'>
+			<div className='h-[32rem] overflow-hidden relative'>
 				<img
 					src={urlFor(data.heroImage)}
 					className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-h-full object-cover'

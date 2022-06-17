@@ -1,10 +1,12 @@
 import { getClient } from '@lib/client';
-import HeroBanner from 'components/HeroBanner';
+import { Layout, HeroBanner } from 'components';
 
 export default function Home({ heroBannerData }) {
 	return (
 		<div>
-			<HeroBanner data={heroBannerData[0]} />
+			<Layout>
+				<HeroBanner data={heroBannerData[0]} />
+			</Layout>
 		</div>
 	);
 }
