@@ -6,8 +6,8 @@ import {
 	BsChevronDown,
 	BsSearch,
 	BsPerson,
-	BsCart2,
 } from 'react-icons/bs';
+import Cart from './Cart';
 
 export default function Header() {
 	return (
@@ -49,7 +49,7 @@ export default function Header() {
 						<div className='ml-2'>
 							<BsChevronDown />
 						</div>
-					</div>	
+					</div>
 				</div>
 
 				<div className='lg:hidden ml-2 sm:ml-8'>
@@ -58,17 +58,7 @@ export default function Header() {
 			</div>
 
 			{/* Cart */}
-			<div className='relative'>
-				<div className='ml-4 lg:ml-8 cursor-pointer flex items-center'>
-					<div className='mr-4 relative'>
-						<BsCart2 size='28px' />
-						<div className='absolute -top-1 -right-2 w-5 h-5 text-xs text-white text-center font-bold leading-none bg-sky-400 p-1 rounded-full hover:scale-125'>
-							0
-						</div>
-					</div>
-					<p className='hidden lg:block font-semibold'>Cart</p>
-				</div>
-			</div>
+			<Cart />
 
 			{/* End */}
 		</div>

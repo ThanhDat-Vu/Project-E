@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { Layout } from '../../components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 import { urlFor } from '@lib/sanity';
+import { useCartContext } from 'context/CartContext';
 
 export default function ProductDetails({ product }) {
 	const [index, setIndex] = useState(0);
+
+	const { addItem } = useCartContext();
 
 	return (
 		<Layout>
@@ -61,7 +64,10 @@ export default function ProductDetails({ product }) {
 							</div>
 
 							{/* Buttons */}
-							<button className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm mb-4 hover:bg-sky-400'>
+							<button
+								className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm mb-4 hover:bg-sky-400'
+								onClick={() => addItem(product)}
+							>
 								Add to cart
 							</button>
 							<div className='h-4 border-b border-gray-200 text-center mb-8'>
