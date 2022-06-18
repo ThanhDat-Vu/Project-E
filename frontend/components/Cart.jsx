@@ -4,6 +4,7 @@ import { BsCart2, BsTriangleFill, BsDash, BsPlus } from 'react-icons/bs';
 import Link from 'next/link';
 import { urlFor } from '@lib/sanity';
 import { useCartContext } from 'context/CartContext';
+import getStripe from '@lib/stripe';
 
 export default function Cart() {
 	const {
@@ -27,7 +28,22 @@ export default function Cart() {
 		}
 	}, []);
 
-	const handleCheckout = async () => {};
+	const handleCheckout = async () => {
+		// create a Checkout Session.
+		const res = await fetch('/api/checkout_sessions', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(items),
+		});
+		if (res.status === 500) return;
+		const checkoutSession = await res.json();
+
+		// redirect to Checkout
+		const stripe = await getStripe();
+		stripe.redirectToCheckout({
+			sessionId: checkoutSession.id,
+		});
+	};
 
 	return (
 		<OutsiderAlerter setShowPopover={setShowCart}>
