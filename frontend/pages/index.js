@@ -3,11 +3,9 @@ import { Layout, HeroBanner } from 'components';
 
 export default function Home({ heroBanner }) {
 	return (
-		<div>
-			<Layout>
-				<HeroBanner heroBanner={heroBanner} />
-			</Layout>
-		</div>
+		<Layout>
+			<HeroBanner heroBanner={heroBanner} />
+		</Layout>
 	);
 }
 
