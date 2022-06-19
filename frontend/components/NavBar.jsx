@@ -3,20 +3,21 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 export default function NavBar({ collections }) {
 	return (
-		<div className='hidden lg:flex bg-white p-6 mb-8 drop-shadow-sm flex justify-center space-x-8 relative z-10'>
+		<div className='hidden lg:flex bg-white p-6 mb-8 drop-shadow-sm justify-center space-x-8 relative z-10'>
 			{collections.map((collection) => (
 				// Collections
 				// ref: https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state
 				// fix: https://stackoverflow.com/questions/71706064/react-18-hydration-failed-because-the-initial-ui-does-not-match-what-was-render
 				<div className='group'>
 					<Link href='#'>
-						<a className='flex items-center relative'>
+						<a className='flex items-center'>
 							{collection.label}
 							{collection.subCollections && (
-								<BsChevronDown className='text-xs ml-1 relative' />
+								<BsChevronDown className='text-xs ml-1' />
 							)}
 						</a>
 					</Link>
+
 					{collection.subCollections && (
 						// Sub Collections
 						// ref: https://stackoverflow.com/questions/53047362/make-absolute-positioned-div-fit-content-width-and-overflow-parent-with-horizont
@@ -28,15 +29,12 @@ export default function NavBar({ collections }) {
 							<div className='bg-white p-8 mt-6 border border-gray-200 space-y-4'>
 								{collection.subCollections.map((subCollection) => (
 									<Link href='#'>
-										<a
-											className={`flex items-center relative ${
-												subCollection.subCollections ? 'peer' : ''
-											}`}
-										>
-											{subCollection.label}
-										</a>
+										<a className='flex items-center'>{subCollection.label}</a>
 									</Link>
 								))}
+								<Link href='#'>
+									<a className='flex items-center'>Shop All</a>
+								</Link>
 							</div>
 						</div>
 					)}

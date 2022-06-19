@@ -5,16 +5,16 @@ import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 import { urlFor } from '@lib/sanity';
 import { useCartContext } from 'context/CartContext';
 
-export default function ProductDetails({ product }) {
+export default function ProductDetails({ collections, product }) {
 	const [index, setIndex] = useState(0);
 
 	const { addItem } = useCartContext();
 
 	return (
-		<Layout>
+		<Layout collections={collections}>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
-			<div className='p-8 relative'>
+			<div className='px-8 relative'>
 				<div className='flex flex-col space-y-4'>
 					{/* Product Images */}
 					<div className='bg-white px-8 py-12 lg:mr-[29rem] flex flex-col-reverse lg:flex-row'>
@@ -42,7 +42,7 @@ export default function ProductDetails({ product }) {
 
 					{/* Product Details */}
 					{/* Queue Jumper */}
-					<div className='lg:absolute lg:top-4 lg:right-8 lg:w-[28rem] lg:h-full'>
+					<div className='lg:absolute lg:-top-4 lg:right-8 lg:w-[28rem] lg:h-full'>
 						<div className='sticky top-0 bg-white p-8'>
 							{/* Details */}
 							<h1 className='text-2xl font-medium mb-4'>{product.title}</h1>
@@ -115,12 +115,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+	const collectionsQuery =
+	'*[_type == "collection" && isRoot]{ ..., subCollections[]->{ ... } }';
+	const collections = await getClient(true).fetch(collectionsQuery);
+
 	const productQuery = `*[_type == "product" && slug.current == "${slug}"][0]`;
 	const product = await getClient(true).fetch(productQuery);
 
 	return {
 		props: {
-			product,
+			collections,
+			product
 		},
 	};
 }

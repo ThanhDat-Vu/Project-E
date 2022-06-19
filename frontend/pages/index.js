@@ -18,6 +18,7 @@ export async function getStaticProps() {
 	const collectionsQuery =
 		'*[_type == "collection" && isRoot]{ ..., subCollections[]->{ ... } }';
 	const collections = await getClient(true).fetch(collectionsQuery);
+	
 	return {
 		props: {
 			heroBanner,

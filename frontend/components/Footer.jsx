@@ -37,7 +37,7 @@ export default function Footer() {
 						<SocialIcon to='#' hoverEffect={'hover:bg-red-600'}>
 							<BsYoutube />
 						</SocialIcon>
-						<SocialIcon to='#' hoverColor={'hover:bg-cyan-700'}>
+						<SocialIcon to='#' hoverEffect={'hover:bg-cyan-700'}>
 							<BsLinkedin />
 						</SocialIcon>
 					</div>

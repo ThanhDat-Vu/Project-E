@@ -1,16 +1,15 @@
 import Link from 'next/link';
 import Logo from '../assets/Headphones.com_Logo_March_6th_2020_235x@2x.webp';
 // ref: https://react-icons.github.io/react-icons/
-import { BsList, BsChevronDown, BsSearch, BsPerson } from 'react-icons/bs';
+import { BsChevronDown, BsSearch, BsPerson } from 'react-icons/bs';
+import MobileDrawer from './MobileDrawer';
 import Cart from './Cart';
 
-export default function Header() {
+export default function Header({ collections }) {
 	return (
 		<div className='p-4 sm:p-6 flex items-center'>
-			{/* Hambuger Menu */}
-			<div className='lg:hidden ml-1 mr-2'>
-				<BsList size='28px' />
-			</div>
+			{/* Mobile Drawer */}
+			<MobileDrawer collections={collections} />
 
 			{/* Logo */}
 			<Link href='/'>
