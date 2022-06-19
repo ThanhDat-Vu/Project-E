@@ -1,19 +1,14 @@
 import Link from 'next/link';
 import Logo from '../assets/Headphones.com_Logo_March_6th_2020_235x@2x.webp';
 // ref: https://react-icons.github.io/react-icons/
-import {
-	BsList,
-	BsChevronDown,
-	BsSearch,
-	BsPerson,
-} from 'react-icons/bs';
+import { BsList, BsChevronDown, BsSearch, BsPerson } from 'react-icons/bs';
 import Cart from './Cart';
 
 export default function Header() {
 	return (
-		<div className='p-4 sm:p-8 flex items-center'>
+		<div className='p-4 sm:p-6 flex items-center'>
 			{/* Hambuger Menu */}
-			<div className='lg:hidden mr-2'>
+			<div className='lg:hidden ml-1 mr-2'>
 				<BsList size='28px' />
 			</div>
 
@@ -31,9 +26,7 @@ export default function Header() {
 				/>
 				<div className='hidden items-center bg-white px-6 border-l border-sky-200 lg:flex'>
 					<p>All categories</p>
-					<div className='ml-2'>
-						<BsChevronDown />
-					</div>
+					<BsChevronDown className='text-xs ml-1' />
 				</div>
 				<div className='p-3 sm:text-white sm:bg-sky-400 ml-auto'>
 					<BsSearch size='24px' />
@@ -46,9 +39,7 @@ export default function Header() {
 					<p className='text-sky-400'>Login/Signup</p>
 					<div className='flex items-center'>
 						<p className='font-semibold'>My account</p>
-						<div className='ml-2'>
-							<BsChevronDown />
-						</div>
+						<BsChevronDown className='text-xs ml-1' />
 					</div>
 				</div>
 

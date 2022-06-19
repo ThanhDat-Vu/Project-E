@@ -64,7 +64,7 @@ export default function Cart() {
 
 				{/* Cart Popover */}
 				{showCart && (
-					<div className='absolute top-11 right-0 z-10 drop-shadow-xl'>
+					<div className='absolute top-11 right-0 z-10 drop-shadow-xl z-20'>
 						<BsTriangleFill
 							size='24px'
 							className='absolute -top-3 right-4 lg:right-12 text-white'

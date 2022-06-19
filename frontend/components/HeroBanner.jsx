@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function HeroBanner({ heroBanner }) {
 	return (
 		<div className='mx-0 sm:mx-8 text-white relative'>
-			<div className='h-[33rem] overflow-hidden relative'>
+			<div className='h-[32rem] overflow-hidden relative'>
 				<img
 					src={urlFor(heroBanner.heroImage)}
 					className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-h-full object-cover'

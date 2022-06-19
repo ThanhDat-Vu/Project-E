@@ -22,8 +22,13 @@ export default {
 			type: 'string',
 		},
 		{
+			title: 'Root Index',
+			name: 'rootIndex',
+			type: 'number',
+		},
+		{
 			title: 'Sub Collections',
-			name: 'subCollection',
+			name: 'subCollections',
 			type: 'array',
 			of: [
 				{
