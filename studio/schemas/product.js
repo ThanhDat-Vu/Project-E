@@ -48,6 +48,11 @@ export default {
 			type: 'number',
 		},
 		{
+			title: 'Vendor',
+			name: 'vendor',
+			type: 'string',
+		},
+		{
 			title: 'Collections',
 			name: 'collections',
 			type: 'array',
