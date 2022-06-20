@@ -9,8 +9,8 @@ export default function NavBar({ collections }) {
 				// ref: https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state
 				// fix: https://stackoverflow.com/questions/71706064/react-18-hydration-failed-because-the-initial-ui-does-not-match-what-was-render
 				<div className='group'>
-					<Link href='#'>
-						<a className='flex items-center'>
+					<Link href={`/collections/${collection.slug.current}`}>
+						<a className='flex items-center hover:text-sky-400'>
 							{collection.label}
 							{collection.subCollections && (
 								<BsChevronDown className='text-xs ml-1' />
@@ -28,12 +28,12 @@ export default function NavBar({ collections }) {
 							/>
 							<div className='bg-white p-8 mt-6 border border-gray-200 space-y-4'>
 								{collection.subCollections.map((subCollection) => (
-									<Link href='#'>
-										<a className='flex items-center'>{subCollection.label}</a>
+									<Link href={`/collections/${subCollection.slug.current}`}>
+										<a className='flex items-center hover:text-sky-400'>{subCollection.label}</a>
 									</Link>
 								))}
-								<Link href='#'>
-									<a className='flex items-center'>Shop All</a>
+								<Link href={`/collections/${collection.slug.current}`}>
+									<a className='flex items-center hover:text-sky-400'>Shop All</a>
 								</Link>
 							</div>
 						</div>

@@ -105,7 +105,7 @@ export default function ProductDetails({ collections, product }) {
 // ref: https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 // use: define a list of paths to be statically generated
 export async function getStaticPaths() {
-	const productSlugsQuery = '*[_type == "product"].slug.current';
+	const productSlugsQuery = '*[_type == "collection" && slug.current != null].slug.current';
 	const productSlugs = await getClient(true).fetch(productSlugsQuery);
 
 	return {
@@ -116,7 +116,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
 	const collectionsQuery =
-	'*[_type == "collection" && isRoot]{ ..., subCollections[]->{ ... } }';
+	'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
 	const collections = await getClient(true).fetch(collectionsQuery);
 
 	const productQuery = `*[_type == "product" && slug.current == "${slug}"][0]`;

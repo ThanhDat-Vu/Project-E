@@ -16,7 +16,7 @@ export async function getStaticProps() {
 	const heroBanner = await getClient(true).fetch(heroBannerQuery);
 
 	const collectionsQuery =
-		'*[_type == "collection" && isRoot]{ ..., subCollections[]->{ ... } }';
+		'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
 	const collections = await getClient(true).fetch(collectionsQuery);
 	
 	return {

@@ -47,5 +47,18 @@ export default {
 			name: 'percentOff',
 			type: 'number',
 		},
+		{
+			title: 'Collections',
+			name: 'collections',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: {
+						type: 'collection',
+					}
+				}
+			]
+		}
 	],
 };
