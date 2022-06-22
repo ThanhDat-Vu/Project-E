@@ -38,6 +38,21 @@ export default {
 			},
 		},
 		{
+			title: 'Vendor',
+			name: 'vendor',
+			type: 'string',
+		},
+		{
+			title: 'Tags',
+			name: 'tags',
+			type: 'array',
+			of: [
+				{
+					type: 'string',
+				},
+			],
+		},
+		{
 			title: 'Price',
 			name: 'price',
 			type: 'number',
@@ -46,11 +61,13 @@ export default {
 			title: 'Percent Off',
 			name: 'percentOff',
 			type: 'number',
+			initialValue: 0,
 		},
 		{
-			title: 'Vendor',
-			name: 'vendor',
-			type: 'string',
+			title: 'In stock',
+			name: 'inStock',
+			type: 'boolean',
+			initialValue: true,
 		},
 		{
 			title: 'Collections',
@@ -61,9 +78,9 @@ export default {
 					type: 'reference',
 					to: {
 						type: 'collection',
-					}
-				}
-			]
-		}
+					},
+				},
+			],
+		},
 	],
 };

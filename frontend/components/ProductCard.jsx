@@ -8,7 +8,9 @@ export default function ProductCard({ product }) {
 
 	return (
 		<div className='p-4 flex flex-col space-y-2 outline outline-1 outline-gray-200'>
-			<img src={urlFor(product.thumbnail)} />
+			<Link href={`/products/${product.slug.current}`}>
+				<img src={urlFor(product.thumbnail)} className="cursor-pointer" />
+			</Link>
 			<p className='text-xl text-sky-500'>${product.price}</p>
 			<Link href={`/products/${product.slug.current}`}>
 				<a className='font-semibold'>{product.title}</a>
@@ -16,7 +18,7 @@ export default function ProductCard({ product }) {
 			<Link href={`#`}>
 				<a className='text-sm'>{product.vendor.toUpperCase()}</a>
 			</Link>
-			<div className='h-8' />
+			<div className='h-4 grow' />
 			<button className='bg-sky-500 text-white font-bold py-2 rounded-sm hover:bg-sky-400' onClick={() => addItem(product)}>
 				Add to cart
 			</button>
