@@ -42,7 +42,7 @@ export default function Success({ collections }) {
 
 export async function getStaticProps() {
 	const collectionsQuery =
-		'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
+		'*[_type == "collection" && title == "All"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
 	const collections = await getClient(true).fetch(collectionsQuery);
 
 	return {

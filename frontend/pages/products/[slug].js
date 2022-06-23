@@ -15,7 +15,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 		<Layout collections={collections}>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
-			<div className='relative'>
+			<div className='pr-8 relative'>
 				<div className='flex flex-col space-y-4'>
 					{/* Product Images */}
 					<div className='bg-white px-8 py-12 lg:mr-[29rem] flex flex-col-reverse lg:flex-row'>
@@ -108,7 +108,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 // use: define a list of paths to be statically generated
 export async function getStaticPaths() {
 	const productSlugsQuery =
-		'*[_type == "collection" && slug.current != null].slug.current';
+		'*[_type == "product" && slug.current != null].slug.current';
 	const productSlugs = await getClient(true).fetch(productSlugsQuery);
 
 	return {
@@ -119,7 +119,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
 	const collectionsQuery =
-		'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
+		'*[_type == "collection" && title == "All"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
 	const collections = await getClient(true).fetch(collectionsQuery);
 
 	const productQuery = `*[_type == "product" && slug.current == "${slug}"][0]`;

@@ -127,7 +127,6 @@ export default function Cart() {
 															Remove
 														</button>
 													</div>
-
 												</div>
 											</div>
 										))}
@@ -157,9 +156,14 @@ export default function Cart() {
 											Your cart is empty
 										</p>
 									</div>
-									<button className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm hover:bg-sky-400'>
-										Shop our products
-									</button>
+									<Link href='/collections/all'>
+										<button
+											className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm hover:bg-sky-400'
+											onClick={() => setShowCart(false)}
+										>
+											Shop our products
+										</button>
+									</Link>
 								</div>
 							)}
 						</div>
