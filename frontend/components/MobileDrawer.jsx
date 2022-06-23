@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
 	BsList,
 	BsX,
+	BsCaretUpFill,
 	BsChevronRight,
 	BsChevronLeft,
 	BsEnvelope,
@@ -30,6 +31,10 @@ export default function MobileDrawer({ collections }) {
 						<BsX size='28px' />
 					</button>
 					{/* Collections Menu */}
+					<BsCaretUpFill
+						size='28px'
+						className='absolute top-10 left-0 text-white'
+					/>
 					<div className='absolute top-14 -left-5 sm:-left-7 w-screen z-10 p-8 bg-white space-y-6'>
 						{collections.map((collection) =>
 							collection.subCollections ? (

@@ -1,3 +1,4 @@
+import { getClient } from '@lib/client';
 import { useEffect } from 'react';
 import { useCartContext } from 'context/CartContext';
 import { Layout } from 'components';
@@ -5,7 +6,7 @@ import Link from 'next/link';
 import { BsBagCheckFill } from 'react-icons/bs';
 import { runFireworks } from '@lib/fireworks';
 
-export default function Success() {
+export default function Success({ collections }) {
 
 	const {
 		setTotalQty,
@@ -23,7 +24,7 @@ export default function Success() {
 
 
 	return (
-		<Layout>
+		<Layout collections={collections}>
 			<div className='w-fit bg-white px-12 py-16 mx-auto text-center'>
 				<BsBagCheckFill size='40px' className='text-green-600 mx-auto mb-2' />
 				<p className='text-3xl font-semibold mb-8'>Thank you for your purchase!</p>
@@ -38,3 +39,16 @@ export default function Success() {
 		</Layout>
 	);
 }
+
+export async function getStaticProps() {
+	const collectionsQuery =
+		'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
+	const collections = await getClient(true).fetch(collectionsQuery);
+
+	return {
+		props: {
+			collections,
+		},
+	};
+}
+

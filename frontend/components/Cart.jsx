@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import OutsiderAlerter from './OutsiderAlerter';
-import { BsCart2, BsTriangleFill, BsDash, BsPlus } from 'react-icons/bs';
+import { BsCart2, BsCaretUpFill, BsDash, BsPlus } from 'react-icons/bs';
 import Link from 'next/link';
 import { urlFor } from '@lib/sanity';
 import { useCartContext } from 'context/CartContext';
@@ -64,12 +64,12 @@ export default function Cart() {
 
 				{/* Cart Popover */}
 				{showCart && (
-					<div className='absolute top-11 right-0 z-10 drop-shadow-xl z-20'>
-						<BsTriangleFill
+					<div className='absolute top-12 -right-4 sm:right-0 z-10 drop-shadow-xl z-20'>
+						<BsCaretUpFill
 							size='24px'
-							className='absolute -top-3 right-4 lg:right-12 text-white'
+							className='absolute -top-4 right-4 lg:right-12 text-white'
 						/>
-						<div className='flex flex-col w-[20rem] sm:w-[28rem] bg-white p-6'>
+						<div className='flex flex-col w-screen sm:w-[28rem] bg-white p-6'>
 							<p className='bg-gray-200 text-center font-semibold py-2'>
 								Spend $100 more and get free shipping!
 							</p>
@@ -80,44 +80,54 @@ export default function Cart() {
 										{items.map((item, i) => (
 											<div key={i} className='flex text-sm py-4 space-x-4'>
 												<img src={urlFor(item.thumbnail)} className='h-24' />
-												<div className='space-y-2'>
-													<p className='font-light hover:text-blue-500 cursor-pointer'>
-														{item.vendor}
-													</p>
-													<Link href={`/products/${item.slug.current}`}>
-														<p className='font-semibold hover:text-blue-500 cursor-pointer'>
-															{item.title}
+
+												<div className='sm:flex space-y-4'>
+													{/* Item's Information */}
+													<div className='space-y-2'>
+														<p className='font-light hover:text-blue-500 cursor-pointer'>
+															{item.vendor}
 														</p>
-													</Link>
-													<p className='text-blue-500'>${item.price}</p>
-												</div>
-												<div className='my-auto space-y-1'>
-													<div className='flex border border-gray-200 rounded-sm'>
+														<Link href={`/products/${item.slug.current}`}>
+															<p className='font-semibold hover:text-blue-500 cursor-pointer'>
+																{item.title}
+															</p>
+														</Link>
+														<p className='text-blue-500'>${item.price}</p>
+													</div>
+
+													{/* Input Steppers */}
+													<div className='flex sm:block'>
+														<div className='flex border border-gray-200 rounded-sm my-auto'>
+															<button
+																className='p-2 text-gray-400 hover:text-gray-900'
+																onClick={() => adjustQuantity(item, -1)}
+															>
+																<BsDash size='20px' />
+															</button>
+															<input
+																type='text'
+																value={item.quantity}
+																readOnly
+																className='w-4 text-center text-md mx-2 focus:outline-none'
+															/>
+															<button
+																className='p-2 text-gray-400 hover:text-gray-900'
+																onClick={() => adjustQuantity(item, 1)}
+															>
+																<BsPlus size='20px' />
+															</button>
+														</div>
+
 														<button
-															className='p-2 text-gray-400 hover:text-gray-900'
-															onClick={() => adjustQuantity(item, -1)}
+															className='block ml-4 sm:mx-auto sm:mt-2 hover:text-sky-500'
+															onClick={() =>
+																adjustQuantity(item, -item.quantity)
+															}
 														>
-															<BsDash size='20px' />
-														</button>
-														<input
-															type='text'
-															value={item.quantity}
-															readOnly
-															className='w-4 text-center text-md mx-2 focus:outline-none'
-														/>
-														<button
-															className='p-2 text-gray-400 hover:text-gray-900'
-															onClick={() => adjustQuantity(item, 1)}
-														>
-															<BsPlus size='20px' />
+															Remove
 														</button>
 													</div>
-													<button
-														className='block mx-auto hover:text-sky-500'
-														onClick={() => adjustQuantity(item, -item.quantity)}
-													>
-														Remove
-													</button>
+
 												</div>
 											</div>
 										))}

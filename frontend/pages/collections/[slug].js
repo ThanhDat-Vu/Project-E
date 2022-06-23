@@ -4,7 +4,7 @@ import { Layout, ProductCard } from 'components';
 export default function Collection({ collections, currCollection, products }) {
 	return (
 		<Layout collections={collections}>
-			<div className='px-8'>
+			<div>
 				<p className='text-sm'>Home &gt; {currCollection.title}</p>
 				<div className='bg-white my-8'>
 					<div className='p-8'>

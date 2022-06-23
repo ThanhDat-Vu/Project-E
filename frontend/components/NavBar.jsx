@@ -3,7 +3,7 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 export default function NavBar({ collections }) {
 	return (
-		<div className='hidden lg:flex bg-white p-6 mb-8 drop-shadow-sm justify-center space-x-8 relative z-10'>
+		<div className='hidden lg:flex bg-white p-6 drop-shadow-sm justify-center space-x-8 relative z-10'>
 			{collections.map((collection) => (
 				// Collections
 				// ref: https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state
