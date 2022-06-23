@@ -4,8 +4,17 @@ import Logo from '../assets/Headphones.com_Logo_March_6th_2020_235x@2x.webp';
 import { BsChevronDown, BsSearch, BsPerson } from 'react-icons/bs';
 import MobileDrawer from './MobileDrawer';
 import Cart from './Cart';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Header({ collections }) {
+	const [keyword, setKeyword] = useState('');
+
+	const router = useRouter();
+	const handleSearch = () => {
+		router.push({ pathname: '/search', query: { q: keyword } });
+	};
+
 	return (
 		<div className='p-4 sm:p-6 flex items-center'>
 			{/* Mobile Drawer */}
@@ -21,15 +30,25 @@ export default function Header({ collections }) {
 				<input
 					type='text'
 					placeholder='Search...'
+					value={keyword}
+					onChange={(e) => setKeyword(e.target.value)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							router.push({ pathname: '/search', query: { q: keyword } });
+						}
+					}}
 					className='grow px-4 hidden sm:block'
 				/>
 				<div className='hidden items-center bg-white px-6 border-l border-sky-200 lg:flex'>
 					<p>All categories</p>
 					<BsChevronDown className='text-xs ml-1' />
 				</div>
-				<div className='p-3 sm:text-white sm:bg-sky-400 ml-auto'>
+				<button
+					className='p-3 sm:text-white sm:bg-sky-400 ml-auto'
+					onClick={() => handleSearch()}
+				>
 					<BsSearch size='24px' />
-				</div>
+				</button>
 			</div>
 
 			{/* Authentication */}
