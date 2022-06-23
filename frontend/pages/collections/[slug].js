@@ -12,7 +12,7 @@ export default function Collection({ collections, currCollection, products }) {
 					</div>
 					<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px'>
 						{products.map((product, i) => (
-							<ProductCard product={products[i]} key={product._id} />
+							<ProductCard product={products[i]} withButtons={true} key={product._id} />
 						))}
 					</div>
 				</div>

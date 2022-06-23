@@ -10,7 +10,7 @@ import {
 
 export default function Footer() {
 	return (
-		<div className='p-8 mt-8'>
+		<div className='p-8'>
 			<div className='pt-8 border-t border-gray-800 flex flex-col-reverse md:flex-row'>
 				{/* Copyright Information */}
 				<div>

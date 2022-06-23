@@ -7,7 +7,7 @@ export default function Layout({ collections, children }) {
 		<div className='max-w-screen min-h-screen bg-gray-100 overflow-x-hidden'>
 			<Header collections={collections} />
 			<NavBar collections={collections} />
-			{children}
+			<div className='p-8'>{children}</div>
 			<Footer />
 		</div>
 	);

@@ -1,11 +1,12 @@
 import { getClient } from '@lib/client';
 import { useState } from 'react';
-import { Layout } from '../../components';
+import { Layout, ProductCardSlider } from '../../components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 import { urlFor } from '@lib/sanity';
 import { useCartContext } from 'context/CartContext';
 
-export default function ProductDetails({ collections, product }) {
+export default function ProductDetails({ collections, product, youMayLike }) {
+	
 	const [index, setIndex] = useState(0);
 
 	const { addItem } = useCartContext();
@@ -14,7 +15,7 @@ export default function ProductDetails({ collections, product }) {
 		<Layout collections={collections}>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
-			<div className='px-8 relative'>
+			<div className='relative'>
 				<div className='flex flex-col space-y-4'>
 					{/* Product Images */}
 					<div className='bg-white px-8 py-12 lg:mr-[29rem] flex flex-col-reverse lg:flex-row'>
@@ -43,7 +44,7 @@ export default function ProductDetails({ collections, product }) {
 					{/* Product Details */}
 					{/* Queue Jumper */}
 					<div className='lg:absolute lg:-top-4 lg:right-8 lg:w-[28rem] lg:h-full'>
-						<div className='sticky top-0 bg-white p-8'>
+						<div className='sticky top-0 bg-white px-6 py-8'>
 							{/* Details */}
 							<h1 className='text-2xl font-medium mb-4'>{product.title}</h1>
 							<div className='text-amber-500 mb-4 flex items-center space-x-1'>
@@ -76,8 +77,6 @@ export default function ProductDetails({ collections, product }) {
 							<button className='w-full bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'>
 								Buy it now
 							</button>
-
-							{/* End */}
 						</div>
 					</div>
 
@@ -95,6 +94,9 @@ export default function ProductDetails({ collections, product }) {
 						</p>
 					</div>
 
+					{/* "You may also like" Products */}
+					<ProductCardSlider products={youMayLike} title='You may also like' />
+
 					{/* End */}
 				</div>
 			</div>
@@ -105,7 +107,8 @@ export default function ProductDetails({ collections, product }) {
 // ref: https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 // use: define a list of paths to be statically generated
 export async function getStaticPaths() {
-	const productSlugsQuery = '*[_type == "collection" && slug.current != null].slug.current';
+	const productSlugsQuery =
+		'*[_type == "collection" && slug.current != null].slug.current';
 	const productSlugs = await getClient(true).fetch(productSlugsQuery);
 
 	return {
@@ -116,16 +119,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
 	const collectionsQuery =
-	'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
+		'*[_type == "collection" && title == "Navigation Bar"]{ subCollections[]->{ ..., subCollections[]->{ ... } } }[0].subCollections';
 	const collections = await getClient(true).fetch(collectionsQuery);
 
 	const productQuery = `*[_type == "product" && slug.current == "${slug}"][0]`;
 	const product = await getClient(true).fetch(productQuery);
 
+	const youMayLikeQuery = '*[_type == "product"][0...12]';
+	const youMayLike = await getClient(true).fetch(youMayLikeQuery);
+
 	return {
 		props: {
 			collections,
-			product
+			product,
+			youMayLike,
 		},
 	};
 }
