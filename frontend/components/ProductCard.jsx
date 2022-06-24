@@ -22,12 +22,19 @@ export default function ProductCard({ product, className, withButtons }) {
 			{withButtons && (
 				<>
 					<div className='h-4 grow' />
-					<button
-						className='bg-sky-500 text-white font-bold py-2 rounded-sm hover:bg-sky-400'
-						onClick={() => addItem(product)}
-					>
-						Add to cart
-					</button>
+					{product.inStock ? (
+						<button
+							className='bg-sky-500 text-white font-bold py-2 rounded-sm hover:bg-sky-400'
+							onClick={() => addItem(product)}
+						>
+							Add to cart
+						</button>
+					) : (
+						<button className='bg-gray-400 text-white font-bold py-2 rounded-sm cursor-not-allowed'>
+							Sold out
+						</button>
+					)}
+
 					<button className='text-sky-500 font-bold py-2 border rounded-sm hover:text-gray-800 hover:bg-gray-200'>
 						Quick view
 					</button>

@@ -25,7 +25,7 @@ export default function Success({ collections }) {
 
 	return (
 		<Layout collections={collections}>
-			<div className='w-fit bg-white px-12 py-16 mx-auto text-center'>
+			<div className='w-fit bg-white px-12 py-16 border mx-auto text-center'>
 				<BsBagCheckFill size='40px' className='text-green-600 mx-auto mb-2' />
 				<p className='text-3xl font-semibold mb-8'>Thank you for your purchase!</p>
 				<p className='mb-2'>Check your email inbox for the receipt.</p>

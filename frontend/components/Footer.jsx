@@ -21,25 +21,37 @@ export default function Footer() {
 				{/* Social Channels */}
 				<div className='mb-8 md:ml-auto'>
 					<p>Follow Us</p>
-					<div className='flex items-center space-x-2 mt-4'>
-						<SocialIcon to='#' hoverEffect={'hover:bg-blue-900'}>
-							<BsFacebook />
-						</SocialIcon>
-						<SocialIcon to='#' hoverEffect={'hover:bg-sky-500'}>
-							<BsTwitter />
-						</SocialIcon>
-						<SocialIcon to='#' hoverEffect={'hover:bg-rose-500'}>
-							<BsInstagram />
-						</SocialIcon>
-						<SocialIcon to='#' hoverEffect={'hover:bg-red-700'}>
-							<BsPinterest />
-						</SocialIcon>
-						<SocialIcon to='#' hoverEffect={'hover:bg-red-600'}>
-							<BsYoutube />
-						</SocialIcon>
-						<SocialIcon to='#' hoverEffect={'hover:bg-cyan-700'}>
-							<BsLinkedin />
-						</SocialIcon>
+					<div className='flex items-center mt-4'>
+						<SocialIcon
+							to='https://www.facebook.com/headphonesdotcom'
+							hoverEffect={'hover:bg-blue-900'}
+							icon={<BsFacebook />}
+						/>
+						<SocialIcon
+							to='https://twitter.com/HeadphoneDotCom'
+							hoverEffect={'hover:bg-sky-500'}
+							icon={<BsTwitter />}
+						/>
+						<SocialIcon
+							to='https://www.instagram.com/headphones_dot_com/'
+							hoverEffect={'hover:bg-rose-500'}
+							icon={<BsInstagram />}
+						/>
+						<SocialIcon
+							to='https://www.pinterest.ca/headphonesdotcom/'
+							hoverEffect={'hover:bg-red-700'}
+							icon={<BsInstagram />}
+						/>
+						<SocialIcon
+							to='https://www.youtube.com/channel/UCt44wdefZzrhNDYYAyEy3Xg'
+							hoverEffect={'hover:bg-red-600'}
+							icon={<BsYoutube />}
+						/>
+						<SocialIcon
+							to='https://www.linkedin.com/company/headphones.com'
+							hoverEffect={'hover:bg-cyan-700'}
+							icon={<BsLinkedin />}
+						/>
 					</div>
 				</div>
 

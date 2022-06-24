@@ -71,19 +71,21 @@ export default function Cart() {
 						/>
 						<div className='flex flex-col w-screen sm:w-[28rem] bg-white p-6'>
 							<p className='bg-gray-200 text-center font-semibold py-2'>
-								Spend $100 more and get free shipping!
+								{total < 100
+									? `Spend $${new Intl.NumberFormat().format(100 - total)} more and get free shipping!`
+									: 'You are eligible for free shipping!'}
 							</p>
 							{items.length ? (
 								<>
 									<div className='my-auto space-y-4 divide-y'>
 										{/* Items Cards */}
 										{items.map((item, i) => (
-											<div key={i} className='flex text-sm py-4 space-x-4'>
+											<div key={i} className='flex text-sm py-4 space-x-2'>
 												<img src={urlFor(item.thumbnail)} className='h-24' />
 
-												<div className='sm:flex space-y-4'>
+												<div className='grow sm:flex space-y-4'>
 													{/* Item's Information */}
-													<div className='space-y-2'>
+													<div className='grow space-y-2'>
 														<p className='font-light hover:text-blue-500 cursor-pointer'>
 															{item.vendor}
 														</p>

@@ -1,4 +1,5 @@
 import { getClient } from '@lib/client';
+import getStripe from '@lib/stripe';
 import { useState } from 'react';
 import { Layout, ProductCardSlider } from '../../components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
@@ -6,10 +7,27 @@ import { urlFor } from '@lib/sanity';
 import { useCartContext } from 'context/CartContext';
 
 export default function ProductDetails({ collections, product, youMayLike }) {
-	
 	const [index, setIndex] = useState(0);
 
 	const { addItem } = useCartContext();
+
+	const handleBuyNow = async () => {
+		console.log([{ ...product, quantity: 1 }]);
+		// create a Checkout Session.
+		const res = await fetch('/api/checkout_sessions', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify([{ ...product, quantity: 1 }]),
+		});
+		if (res.status === 500) return;
+		const checkoutSession = await res.json();
+
+		// redirect to Checkout
+		const stripe = await getStripe();
+		stripe.redirectToCheckout({
+			sessionId: checkoutSession.id,
+		});
+	};
 
 	return (
 		<Layout collections={collections}>
@@ -18,7 +36,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 			<div className='pr-8 relative'>
 				<div className='flex flex-col space-y-4'>
 					{/* Product Images */}
-					<div className='bg-white px-8 py-12 lg:mr-[29rem] flex flex-col-reverse lg:flex-row'>
+					<div className='bg-white px-8 py-12 lg:mr-[29rem] border flex flex-col-reverse lg:flex-row'>
 						{/* Image Selection */}
 						<div className='shrink-0 max-h-96 overflow-hidden'>
 							<div className='w-full h-full pr-8 box-content overflow-y-scroll flex flex-row lg:flex-col space-x-2 lg:space-x-0 lg:space-y-2'>
@@ -44,7 +62,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 					{/* Product Details */}
 					{/* Queue Jumper */}
 					<div className='lg:absolute lg:-top-4 lg:right-8 lg:w-[28rem] lg:h-full'>
-						<div className='sticky top-0 bg-white px-6 py-8'>
+						<div className='sticky top-0 bg-white px-6 py-8 border'>
 							{/* Details */}
 							<h1 className='text-2xl font-medium mb-4'>{product.title}</h1>
 							<div className='text-amber-500 mb-4 flex items-center space-x-1'>
@@ -58,30 +76,50 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 								</p>
 							</div>
 							<p className='text-3xl font-medium mb-4'>${product.price}</p>
-							<div className='text-sm leading-6 mb-4'>
-								<p className='text-green-700 font-semibold'>In stock</p>
-								<p>Ships same business day (Monday - Friday)</p>
-								<p>Order by XXhrs XXmins For Free X Overnight</p>
-							</div>
 
-							{/* Buttons */}
-							<button
-								className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm mb-4 hover:bg-sky-400'
-								onClick={() => addItem(product)}
-							>
-								Add to cart
-							</button>
-							<div className='h-4 border-b border-gray-200 text-center mb-8'>
-								<span className='bg-white px-4'>or quick checkout with</span>
-							</div>
-							<button className='w-full bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'>
-								Buy it now
-							</button>
+							{product.inStock ? (
+								<>
+									<div className='text-sm leading-6 mb-4'>
+										<p className='text-green-700 font-semibold'>In stock</p>
+										<p>Ships same business day (Monday - Friday)</p>
+									</div>
+									<button
+										className='w-full bg-sky-500 text-white font-bold py-3 rounded-sm mb-4 hover:bg-sky-400'
+										onClick={() => addItem(product)}
+									>
+										Add to cart
+									</button>
+									<div className='h-4 border-b border-gray-200 text-center mb-8'>
+										<span className='bg-white px-4'>
+											or quick checkout with
+										</span>
+									</div>
+									<button
+										className='w-full bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'
+										onClick={() => handleBuyNow()}
+									>
+										Buy it now
+									</button>
+								</>
+							) : (
+								<>
+									<div className='text-sm leading-6 mb-4'>
+										<p className='text-red-600 font-semibold'>Out of stock</p>
+										<p>
+											Currently on Backorder. Join our E-mail list to be
+											notified as soon as it is back in stock.
+										</p>
+									</div>
+									<button className='w-full bg-gray-400 text-white font-bold py-3 rounded-sm mb-4 cursor-not-allowed'>
+										Sold out
+									</button>
+								</>
+							)}
 						</div>
 					</div>
 
 					{/* Product Description */}
-					<div className='bg-white p-8 lg:mr-[29rem] space-y-4'>
+					<div className='bg-white p-8 lg:mr-[29rem] space-y-4 border'>
 						<h3 className='text-2xl font-semibold'>Description</h3>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
