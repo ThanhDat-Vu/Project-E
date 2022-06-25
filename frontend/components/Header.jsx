@@ -22,7 +22,7 @@ export default function Header({ collections }) {
 
 			{/* Logo */}
 			<Link href='/'>
-				<img src={Logo.src} className='h-12 md:h-16 cursor-pointer' />
+				<img src={Logo.src} className='h-12 md:h-16 cursor-pointer' alt='Headphones.com Logo' />
 			</Link>
 
 			{/* Search and Filters */}
@@ -46,6 +46,7 @@ export default function Header({ collections }) {
 				<button
 					className='p-3 sm:text-white sm:bg-sky-400 ml-auto'
 					onClick={() => handleSearch()}
+					aria-label="Search"
 				>
 					<BsSearch size='24px' />
 				</button>
@@ -54,7 +55,7 @@ export default function Header({ collections }) {
 			{/* Authentication */}
 			<div>
 				<div className='hidden lg:block px-8 border-r border-gray-200'>
-					<p className='text-sky-400'>Login/Signup</p>
+					<p className='text-sky-500'>Login/Signup</p>
 					<div className='flex items-center'>
 						<p className='font-semibold'>My account</p>
 						<BsChevronDown className='text-xs ml-1' />

@@ -10,7 +10,7 @@ export default function ProductCard({ product, className, withButtons }) {
 			className={`p-4 bg-white flex flex-col space-y-2 outline outline-1 outline-gray-200 ${className}`}
 		>
 			<Link href={`/products/${product.slug.current}`}>
-				<img src={urlFor(product.thumbnail)} className='cursor-pointer' />
+				<img src={urlFor(product.thumbnail)} className='cursor-pointer' alt="Product Thumbnail" />
 			</Link>
 			<p className='text-xl text-sky-500'>${product.price}</p>
 			<Link href={`/products/${product.slug.current}`}>

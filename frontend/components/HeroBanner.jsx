@@ -8,6 +8,7 @@ export default function HeroBanner({ heroBanner }) {
 				<img
 					src={urlFor(heroBanner.heroImage)}
 					className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-h-full object-cover'
+					alt='Hero Banner Image'
 				/>
 			</div>
 			<div className='absolute inset-0 inline h-1/4 px-8 my-auto space-y-4 text-center sm:text-left'>

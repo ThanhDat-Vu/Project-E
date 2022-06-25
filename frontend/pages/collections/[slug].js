@@ -1,10 +1,9 @@
 import { getClient } from '@lib/client';
-import { BsChevronDown } from 'react-icons/bs';
 import { Layout, ProductCard } from 'components';
 
 export default function Collection({ collections, currCollection, products }) {
 	return (
-		<Layout collections={collections}>
+		<Layout collections={collections} title={currCollection.title}>
 			<p className='text-sm'>Home &gt; {currCollection.title}</p>
 			<div className='my-8'>
 				<div className='bg-white border'>

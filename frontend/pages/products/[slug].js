@@ -30,7 +30,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 	};
 
 	return (
-		<Layout collections={collections}>
+		<Layout collections={collections} title={`${product.title} - Headphones.com`}>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
 			<div className='pr-8 relative'>
