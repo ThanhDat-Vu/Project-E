@@ -1,11 +1,13 @@
 {
 	"name": "frontend",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"prebuild": "echo 'Building Sanity to public/studio' && cd ../studio && yarn && npx @sanity/cli build ../frontend/public/studio -y && echo 'Done'",
 		"build": "next build",
 		"start": "next start",
+		"sanity": "cd ../studio && sanity start",
 		"lint": "next lint"
 	},
 	"dependencies": {
