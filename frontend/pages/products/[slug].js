@@ -1,6 +1,7 @@
 import { getClient } from '@lib/client';
 import getStripe from '@lib/stripe';
 import { useState } from 'react';
+import Error from 'next/error';
 import { Layout, ProductCardSlider } from '../../components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 import { urlFor } from '@lib/sanity';
@@ -29,8 +30,15 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 		});
 	};
 
+	if (!product) {
+		return <Error statusCode={404} />;
+	}
+
 	return (
-		<Layout collections={collections} title={`${product.title} - Headphones.com`}>
+		<Layout
+			collections={collections}
+			title={`${product?.title} - Headphones.com`}
+		>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
 			<div className='pr-8 relative'>
@@ -40,7 +48,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 						{/* Image Selection */}
 						<div className='shrink-0 max-h-96 overflow-hidden'>
 							<div className='w-full h-full pr-8 box-content overflow-y-scroll flex flex-row lg:flex-col space-x-2 lg:space-x-0 lg:space-y-2'>
-								{product.images.map((image, i) => (
+								{product?.images.map((image, i) => (
 									<img
 										src={urlFor(image)}
 										alt={image.name}
@@ -55,7 +63,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 						</div>
 						{/* Selected Image */}
 						<div className='mb-8 lg:mb-0'>
-							<img src={urlFor(product.images[index])} alt={product.name} />
+							<img src={urlFor(product?.images[index])} alt={product?.name} />
 						</div>
 					</div>
 
@@ -64,7 +72,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 					<div className='lg:absolute lg:-top-4 lg:right-8 lg:w-[28rem] lg:h-full'>
 						<div className='sticky top-0 bg-white px-6 py-8 border'>
 							{/* Details */}
-							<h1 className='text-2xl font-medium mb-4'>{product.title}</h1>
+							<h1 className='text-2xl font-medium mb-4'>{product?.title}</h1>
 							<div className='text-amber-500 mb-4 flex items-center space-x-1'>
 								<BsStarFill />
 								<BsStarFill />
@@ -75,9 +83,9 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 									Read X Reviews
 								</p>
 							</div>
-							<p className='text-3xl font-medium mb-4'>${product.price}</p>
+							<p className='text-3xl font-medium mb-4'>${product?.price}</p>
 
-							{product.inStock ? (
+							{product?.inStock ? (
 								<>
 									<div className='text-sm leading-6 mb-4'>
 										<p className='text-green-700 font-semibold'>In stock</p>

@@ -1,21 +1,26 @@
 import { getClient } from '@lib/client';
+import Error from 'next/error';
 import { Layout, ProductCard } from 'components';
 
 export default function Collection({ collections, currCollection, products }) {
+	if (!currCollection) {
+		<Error statusCode={404} />
+	}
+
 	return (
-		<Layout collections={collections} title={currCollection.title}>
-			<p className='text-sm'>Home &gt; {currCollection.title}</p>
+		<Layout collections={collections} title={currCollection?.title}>
+			<p className='text-sm'>Home &gt; {currCollection?.title}</p>
 			<div className='my-8'>
 				<div className='bg-white border'>
 					<div className='p-8 space-y-4'>
-						<h1 className='text-2xl font-bold'>{currCollection.title}</h1>
+						<h1 className='text-2xl font-bold'>{currCollection?.title}</h1>
 						<p className=''>
-							<span className='font-bold'>{products.length}</span> product
-							{products.length > 1 ? 's' : ''}
+							<span className='font-bold'>{products?.length}</span> product
+							{products?.length > 1 ? 's' : ''}
 						</p>
 					</div>
 					<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px'>
-						{products.map((product, i) => (
+						{products?.map((product, i) => (
 							<ProductCard
 								product={products[i]}
 								withButtons={true}

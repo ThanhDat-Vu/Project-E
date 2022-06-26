@@ -3,11 +3,9 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
-		"prebuild": "echo 'Building Sanity to public/studio' && cd ../studio && yarn && npx @sanity/cli build ../frontend/public/studio -y && echo 'Done'",
-		"build": "next build",
+		"dev": "concurrently \"next\" \"cd ../studio && sanity start\"",
+		"build": "echo 'Building Sanity to /frontend/studio…' && cd ../studio && sanity install && sanity build ../frontend/public/studio -y && cd ../frontend && next build",
 		"start": "next start",
-		"sanity": "cd ../studio && sanity start",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -23,6 +21,7 @@
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.7",
+		"concurrently": "^7.2.2",
 		"eslint": "8.17.0",
 		"eslint-config-next": "12.1.6",
 		"postcss": "^8.4.14",
