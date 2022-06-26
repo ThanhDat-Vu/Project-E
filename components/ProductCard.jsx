@@ -10,7 +10,11 @@ export default function ProductCard({ product, className, withButtons }) {
 			className={`p-4 bg-white flex flex-col space-y-2 outline outline-1 outline-gray-200 ${className}`}
 		>
 			<Link href={`/products/${product?.slug.current}`}>
-				<img src={urlFor(product?.thumbnail)} className='cursor-pointer' alt="Product Thumbnail" />
+				<img
+					src={urlFor(product?.thumbnail)}
+					className='cursor-pointer'
+					alt='Product Thumbnail'
+				/>
 			</Link>
 			<p className='text-xl text-sky-500'>${product?.price}</p>
 			<Link href={`/products/${product?.slug.current}`}>
@@ -35,7 +39,12 @@ export default function ProductCard({ product, className, withButtons }) {
 						</button>
 					)}
 
-					<button className='text-sky-500 font-bold py-2 border rounded-sm hover:text-gray-800 hover:bg-gray-200'>
+					<button
+						className='text-sky-500 font-bold py-2 border rounded-sm hover:text-gray-800 hover:bg-gray-200'
+						onClick={() => {
+							alert('This feature is under development');
+						}}
+					>
 						Quick view
 					</button>
 				</>

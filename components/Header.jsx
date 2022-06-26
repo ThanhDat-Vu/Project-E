@@ -68,7 +68,12 @@ export default function Header({ collections }) {
 					</button>
 				</div>
 				{/* Authentication */}
-				<div>
+				<div
+					className='cursor-pointer'
+					onClick={() => {
+						alert('This feature is under development');
+					}}
+				>
 					<div className='hidden lg:block px-8 border-r border-gray-200'>
 						<p className='text-sky-500'>Login/Signup</p>
 						<div className='flex items-center'>

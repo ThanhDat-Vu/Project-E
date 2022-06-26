@@ -72,7 +72,9 @@ export default function Cart() {
 						<div className='flex flex-col w-screen sm:w-[28rem] bg-white p-6'>
 							<p className='bg-gray-200 text-center font-semibold py-2'>
 								{total < 100
-									? `Spend $${new Intl.NumberFormat().format(100 - total)} more and get free shipping!`
+									? `Spend $${new Intl.NumberFormat().format(
+											100 - total
+									  )} more and get free shipping!`
 									: 'You are eligible for free shipping!'}
 							</p>
 							{items.length ? (
@@ -139,7 +141,12 @@ export default function Cart() {
 										<p>${new Intl.NumberFormat().format(total)}</p>
 									</div>
 									<div className='flex space-x-4'>
-										<button className='grow bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'>
+										<button
+											className='grow bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'
+											onClick={() => {
+												alert('This feature is under development');
+											}}
+										>
 											View Cart
 										</button>
 										<button
