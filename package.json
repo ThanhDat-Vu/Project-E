@@ -1,10 +1,10 @@
 {
-	"name": "frontend",
+	"name": "project-e",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "concurrently \"next\" \"cd ../studio && sanity start\"",
-		"build": "echo 'Building Sanity to /frontend/studio…' && cd ../studio && sanity install && sanity build ../frontend/public/studio -y && cd ../frontend && next build",
+		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
+		"build": "echo 'Building Sanity to /public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
