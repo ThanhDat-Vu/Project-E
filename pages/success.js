@@ -19,7 +19,7 @@ export default function Success({ collections }) {
 
 	return (
 		<Layout collections={collections}>
-			<div className='w-fit bg-white px-12 py-16 border mx-auto text-center'>
+			<div className='w-fit bg-white px-8 sm:px-12 py-16 border mx-auto text-center'>
 				<BsBagCheckFill size='40px' className='text-green-600 mx-auto mb-2' />
 				<p className='text-3xl font-semibold mb-8'>
 					Thank you for your purchase!
@@ -29,7 +29,7 @@ export default function Success({ collections }) {
 					If you have any question, please email to info@headphones.com
 				</p>
 				<Link href='/'>
-					<a className='bg-sky-500 text-white font-bold px-12 py-3 rounded-sm mb-4 hover:bg-sky-400'>
+					<a className='inline-block bg-sky-500 text-white font-bold px-6 py-3 rounded-sm mb-4 hover:bg-sky-400'>
 						CONTINUE SHOPPING
 					</a>
 				</Link>
