@@ -8,26 +8,24 @@ export default function Search({ collections, products }) {
 
 	return (
 		<Layout collections={collections}>
-			<div>
-				<p className='text-sm'>Home &gt; Search</p>
-				<div className='bg-white border my-8'>
-					<div className='p-8 space-y-2'>
-						<h1 className='text-2xl font-bold'>Search</h1>
-						<p className=''>
-							<span className='font-bold'>{products?.length}</span> result
-							{products?.length > 1 ? 's' : ''} for{' '}
-							<span className='font-bold'>{keyword}</span>
-						</p>
-					</div>
-					<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px'>
-						{products?.map((product, i) => (
-							<ProductCard
-								product={products[i]}
-								withButtons={true}
-								key={product._id}
-							/>
-						))}
-					</div>
+			<p className='text-sm'>Home &gt; Search</p>
+			<div className='-mx-4 sm:mx-0 bg-white border my-8'>
+				<div className='p-8 space-y-2'>
+					<h1 className='text-2xl font-bold'>Search</h1>
+					<p className=''>
+						<span className='font-bold'>{products?.length}</span> result
+						{products?.length > 1 ? 's' : ''} {keyword ? 'for ' : ''}
+						<span className='font-bold'>{keyword}</span>
+					</p>
+				</div>
+				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px'>
+					{products?.map((product, i) => (
+						<ProductCard
+							product={products[i]}
+							withButtons={true}
+							key={product._id}
+						/>
+					))}
 				</div>
 			</div>
 		</Layout>

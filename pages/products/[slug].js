@@ -41,7 +41,7 @@ export default function ProductDetails({ collections, product, youMayLike }) {
 		>
 			{/* Queue Jumping Layout */}
 			{/* ref: https://stackoverflow.com/questions/44603729/how-to-use-flexbox-to-layout-multiple-columns */}
-			<div className='pr-8 relative'>
+			<div className='sm:pr-8 relative'>
 				<div className='flex flex-col space-y-4'>
 					{/* Product Images */}
 					<div className='bg-white px-8 py-12 lg:mr-[29rem] border flex flex-col-reverse lg:flex-row'>
