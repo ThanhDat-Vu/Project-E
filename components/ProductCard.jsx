@@ -42,7 +42,7 @@ export default function ProductCard({ product, className, withButtons }) {
 					<button
 						className='text-sky-500 font-bold py-2 border rounded-sm hover:text-gray-800 hover:bg-gray-200'
 						onClick={() => {
-							alert('This feature is under development');
+							alert('This feature is under development!');
 						}}
 					>
 						Quick view

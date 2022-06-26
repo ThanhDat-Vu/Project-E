@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project-E: Full Stack E-Commerce React Application
 
-## Getting Started
+Project-E is a high-performance, full-stack e-commerce web application that is built with cutting-edge technologies. The website is fully responsive and user-friendly. It has all of the essential features of a modern e-commerce website.
 
-First, run the development server:
+### Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+In order to save time on creating a great design and gathering necessary data, I made a clone of [Headphones.com](https://www.headphones.com/).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Demo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Here is a working live demo: https://project-e--thanhdat-vu.vercel.app/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Core Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- View product collections and product details
+- Basic search functionality
+- Fully functional shopping cart
+- Complete checkout flow with Stripe
+- Manage products with Sanity
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/)
+- [Sanity](https://www.sanity.io/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Stripe](https://stripe.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Lessons Learned
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Aside from technical knowledge, I learned that it is difficult to create a perfect project plan that outlines all the tasks I need to accomplish. Problems might arise at any time, and sometimes I realize that I was heading in the wrong direction. It is, nevertheless, what makes programming interesting. The more tasks I complete, the more problems I solve, the more valuable experience I gain, the better the project.
 
-## Deploy on Vercel
+## Bug
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an [issue](https://github.com/ThanhDat-Vu/Project-E/issues) here by including your search query and the expected result.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Feedback
+
+If you have any feedback, please reach out to me at 2052118@gm.uit.edu.vn
+
+## License
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)

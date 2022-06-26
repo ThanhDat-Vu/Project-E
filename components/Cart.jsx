@@ -144,7 +144,7 @@ export default function Cart() {
 										<button
 											className='grow bg-stone-700 text-white font-bold py-3 rounded-sm hover:bg-stone-600'
 											onClick={() => {
-												alert('This feature is under development');
+												alert('This feature is under development!');
 											}}
 										>
 											View Cart

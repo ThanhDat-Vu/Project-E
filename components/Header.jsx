@@ -71,7 +71,7 @@ export default function Header({ collections }) {
 				<div
 					className='cursor-pointer'
 					onClick={() => {
-						alert('This feature is under development');
+						alert('This feature is under development!');
 					}}
 				>
 					<div className='hidden lg:block px-8 border-r border-gray-200'>
