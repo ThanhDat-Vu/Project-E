@@ -30,5 +30,7 @@ export async function getStaticProps() {
 			heroBanner,
 			bestSellers,
 		},
+		// https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
+		revalidate: 10,
 	};
 }

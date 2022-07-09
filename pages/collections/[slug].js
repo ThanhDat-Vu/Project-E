@@ -67,5 +67,6 @@ export async function getStaticProps({ params: { slug } }) {
 			currCollection,
 			products,
 		},
+		revalidate: 10,
 	};
 }

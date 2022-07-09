@@ -180,5 +180,6 @@ export async function getStaticProps({ params: { slug } }) {
 			product,
 			youMayLike,
 		},
+		revalidate: 10,
 	};
 }

@@ -18,7 +18,7 @@ export default function ProductCard({ product, className, withButtons }) {
 			</Link>
 			<p className='text-xl text-sky-500'>${product?.price}</p>
 			<Link href={`/products/${product?.slug.current}`}>
-				<a className='font-semibold'>{product?.title}</a>
+				<a className='font-semibold hover:text-sky-500'>{product?.title}</a>
 			</Link>
 			<Link href={`#`}>
 				<a className='text-sm'>{product?.vendor.toUpperCase()}</a>

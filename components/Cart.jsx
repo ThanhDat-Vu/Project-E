@@ -67,7 +67,7 @@ export default function Cart() {
 					<div className='absolute top-12 -right-4 sm:right-0 z-10 drop-shadow-xl z-20'>
 						<BsCaretUpFill
 							size='24px'
-							className='absolute -top-4 right-4 lg:right-12 text-white'
+							className='absolute -top-4 right-8 sm:right-4 lg:right-12 text-white'
 						/>
 						<div className='flex flex-col w-screen sm:w-[28rem] bg-white p-6'>
 							<p className='bg-gray-200 text-center font-semibold py-2'>
